@@ -64,7 +64,7 @@ ISR(TIMER1_COMPA_vect) {//Interrupt at freq of 1kHz to measure reed switch
   reedVal = digitalRead(reed);//get val of A0
   if (reedVal){//if reed switch is closed
     if (reedCounter == 0){//min time between pulses has passed
-      kmh = (float(circumference))/ 100     /float(timer) / 60 / 60;//calculate miles per hour
+      kmh = ((float(circumference))/ 100 )    /(float(timer) / 60 / 60);//calculate miles per hour
       distance += circumference / 100 / 1000;
       
       timer = 0;//reset timer
@@ -90,8 +90,7 @@ ISR(TIMER1_COMPA_vect) {//Interrupt at freq of 1kHz to measure reed switch
 }
 
 void displayKMH(){
-  Serial.print(kmh);
-  Serial.println(" kmh");
+  Serial.println(kmh);
 }
 
 void loop(){
